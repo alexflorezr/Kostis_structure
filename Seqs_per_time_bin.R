@@ -2,7 +2,7 @@ setwd()
 Dataset <- read.delim(file.choose(), sep = "\t", stringsAsFactors = F)
 Dataset <- read.delim(file="~/Desktop/PhD/Thesis/Raw_data/Clean_database/DATABASE.txt", sep = "\t", stringsAsFactors = F)
 Species <- unique(Dataset$Species)
-Bins <- seq(0, 50000, 2000)
+Bins <- seq(0, 50000, 10000)
 seqs_per_bin <- as.data.frame(matrix(data=as.numeric(), nrow = length(Species), ncol = length(Bins)))
 colnames(seqs_per_bin) <- Bins
 row.names(seqs_per_bin) <- Species
@@ -35,3 +35,4 @@ mtext(Bins, side=1, at = seq(0-min_x,(1+min_x + (unit_x)), by= 1/length(Bins[-c(
 mtext(Species, side=2, at=seq(0,1, by=1/length(Species[-1])), las=2, cex=0.7)
 abline(h=seq(0,1, by=1/length(Species[-1]))+(1/length(Species[-1])/2), col="#FFFFFF")
 legend("topright", legend = c("0", "<4", "<7", "<10", ">10"), fill = c("#FFFFFF", "#C1CDCD", "#DEB887", "#FF7F00", "#8B7355"), border ="grey", bty = "n", xjust = 1)
+
